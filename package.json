@@ -1,0 +1,43 @@
+{
+  "name": "generator-anication",
+  "version": "0.0.0",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "tapas4java/generator-anication",
+  "author": {
+    "name": "Tapas",
+    "email": "tapas.friends@gmail.com",
+    "url": "https://github.com/tapas4java"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app",
+    "directive",
+    "partial",
+    "service",
+    "filter",
+    "module",
+    "modal",
+    "controller"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.17.0",
+    "chalk": "^0.5.0",
+    "yosay": "^0.3.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}
