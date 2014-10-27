@@ -1,4 +1,4 @@
-# generator-anication [![Build Status](https://secure.travis-ci.org/tapas4java/generator-anication.png?branch=master)](https://travis-ci.org/tapas4java/generator-anication)
+# generator-ngappgen [![Build Status](https://secure.travis-ci.org/tapas4java/generator-anication.png?branch=master)](https://travis-ci.org/tapas4java/generator-anication)
 
 > [Yeoman](http://yeoman.io) generator
 
