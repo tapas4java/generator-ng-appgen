@@ -40,7 +40,11 @@ module.exports = function (grunt) {
     connect: {
       main: {
         options: {
-          port: 9001
+          port: 9000,
+          open: {
+              target: 'http://localhost:9000/',
+              appName: 'Chrome'
+          }
         }
       }
     },
