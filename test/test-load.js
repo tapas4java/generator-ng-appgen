@@ -1,11 +1,13 @@
-/*global describe, beforeEach, it*/
-'use strict';
+(function(){
+    'use strict';
 
-var assert  = require('assert');
+    var assert  = require('assert');
 
-describe('ngappgen generator', function () {
-  it('can be imported without blowing up', function () {
-    var app = require('../app');
-    assert(app !== undefined);
-  });
-});
+    describe('ngappgen generator', function () {
+      it('can be imported without blowing up', function () {
+        var app = require('../app');
+        assert(app !== undefined);
+      });
+    });
+
+})();

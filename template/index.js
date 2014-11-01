@@ -38,6 +38,7 @@ TemplateGenerator.prototype.askFor = function askFor() {
 TemplateGenerator.prototype.files = function files() {
 
     this.ctrlname = _.camelize(_.classify(this.name)) + 'Ctrl';
+    this.templateName =  _.camelize(_.classify(this.name));
 
     cgUtils.processTemplates(this.name, this.dir, 'template', this, null, null, this.module);
 
