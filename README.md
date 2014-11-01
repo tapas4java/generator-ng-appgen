@@ -8,12 +8,12 @@ Features
 
 * Provides a directory structure geared towards large Angular projects.
     * Each controller, service, filter, and directive are placed in their own file.
-    * All files related to a conceptual unit are placed together.  For example, the controller, HTML, LESS, and unit test for a partial are placed together in the same directory.
+    * All files related to a conceptual unit are placed together.  For example, the controller, HTML, LESS, and unit test for a template are placed together in the same directory.
 * Provides a ready-made Grunt build that produces an extremely optimized distribution.
    * Build uses [grunt-ngmin](https://github.com/btford/grunt-ngmin) so you don't have to use the Angular injection syntax for safe minification (i.e. you dont need `$inject` or `(['$scope','$http',...`.
    * `grunt serve` task allows you to run a simple development server with watch/livereload enabled.  Additionally, JSHint and the appropriate unit tests are run for the changed files.
 * Integrates Bower for package management
-* Includes Yeoman subgenerators for directives, services, partials, filters, and modules.
+* Includes Yeoman subgenerators for directives, services, templates, controllers, filters, and modules.
 * Integrates LESS and includes Bootstrap via the source LESS files allowing you to reuse Bootstrap vars/mixins/etc.
 * Easily Testable - Each sub-generator creates a skeleton unit test.  Unit tests can be run via `grunt test` and they run automatically during the grunt watch that is active during `grunt serve`.
 
@@ -34,24 +34,24 @@ In this example, the user has chosen to group the app into an `admin` folder, a 
       /admin-directive1 ............ angular directives folder
         admin-directive1.js ........ example simple directive
         admin-directive1-spec.js.... example simple directive unit test
-      /admin-directive2 ............ example complex directive (contains external partial)
+      /admin-directive2 ............ example complex directive (contains external template)
         admin-directive2.js ........ complex directive javascript
-        admin-directive2.html ...... complex directive partial
+        admin-directive2.html ...... complex directive template
         admin-directive2.less ...... complex directive LESS
         admin-directive2-spec.js ... complex directive unit test
-      /admin-partial ............... example partial
-        admin-partial.html ......... example partial html
-        admin-partial.js ........... example partial controller
-        admin-partial.less ......... example partial LESS
-        admin-partial-spec.js ...... example partial unit test
+      /admin-template ............... example template
+        admin-template.html ......... example template html
+        admin-template.js ........... example template controller
+        admin-template.less ......... example template LESS
+        admin-template-spec.js ...... example template unit test
     /search ........................ example search component folder
       my-filter.js ................. example filter
       my-filter-spec.js ............ example filter unit test
-      /search-partial .............. example partial
-        search-partial.html ........ example partial html
-        search-partial.js .......... example partial controller
-        search-partial.less ........ example partial LESS
-        search-partial-spec.js ..... example partial unit test
+      /search-template .............. example template
+        search-template.html ........ example template html
+        search-template.js .......... example template controller
+        search-template.less ........ example template LESS
+        search-template-spec.js ..... example template unit test
     /service ....................... angular services folder
         my-service.js .............. example service
         my-service-spec.js ......... example service unit test
@@ -98,14 +98,14 @@ There are a set of subgenerators to initialize empty Angular components.  Each o
 * Create one or more skeleton files (javascript, LESS, html, spec etc) for the component type.
 * Update index.html and add the necessary `script` tags.
 * Update app.less and add the @import as needed.
-* For partials, update the app.js, adding the necessary route call if a route was entered in the generator prompts.
+* For templates, update the app.js, adding the necessary route call if a route was entered in the generator prompts.
 
-There are generators for `directive`,`partial`,`service`, `filter`, `module`, `controller` and `modal`.
+There are generators for `directive`, `template`, `service`, `filter`, `module`, `controller` and `modal`.
 
 Running a generator:
 
     yo ngappgen:directive my-awesome-directive
-    yo ngappgen:partial my-partial
+    yo ngappgen:template my-template
     yo ngappgen:service my-service
     yo ngappgen:service my-controller
     yo ngappgen:filter my-filter
@@ -114,7 +114,7 @@ Running a generator:
 
 The name paramater passed (i.e. 'my-awesome-directive') will be used as the file names.  The generators will derive appropriate class names from this parameter (ex. 'my-awesome-directive' will convert to a class name of 'MyAwesomeDirective').  Each sub-generator will ask for the folder in which to create the new skeleton files.  You may override the default folder for each sub-generator in the `.yo-rc.json` file.
 
-The modal subgenerator is a convenient shortcut to create partials that work as modals for Bootstrap v3.1 and Angular-UI-Bootstrap v0.10 (both come preconfigured with this generator).  If you choose not to use either of these libraries, simply don't use the modal subgenerator.
+The modal subgenerator is a convenient shortcut to create templates that work as modals for Bootstrap v3.1 and Angular-UI-Bootstrap v0.10 (both come preconfigured with this generator).  If you choose not to use either of these libraries, simply don't use the modal subgenerator.
 
 Subgenerators are also customizable.  Please read [CUSTOMIZING.md](CUSTOMIZING.md) for details.
 
@@ -134,7 +134,7 @@ Build Process
 The project will include a ready-made Grunt build that will:
 
 * Build all the LESS files into one minified CSS file.
-* Uses [grunt-angular-templates](https://github.com/ericclemmons/grunt-angular-templates) to turn all your partials into Javascript.
+* Uses [grunt-angular-templates](https://github.com/ericclemmons/grunt-angular-templates) to turn all your templates into Javascript.
 * Uses [grunt-ngmin](https://github.com/btford/grunt-ngmin) to preprocess all Angular injectable methods and make them minification safe.  Thus you don't have to use the array syntax.
 * Concatenates and minifies all Javascript into one file.
 * Replaces all appropriate script references in `index.html` with the minified CSS and JS files.

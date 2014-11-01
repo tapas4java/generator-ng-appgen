@@ -11,12 +11,12 @@ Directory to load partial template files from.
 #### directiveSimpleTemplates
 Type: `String`
 
-Directory to load directive template files from if the user has chosen to create a directive without an external partial.
+Directory to load directive template files from if the user has chosen to create a directive without an external template.
 
 #### directiveComplexTemplates
 Type: `String`
 
-Directory to load directive template files from if the user has chosen to create a directive with an external partial.
+Directory to load directive template files from if the user has chosen to create a directive with an external template.
 
 #### serviceTemplates
 Type: `String`
@@ -40,10 +40,10 @@ Here is an example configuration that matches the default behavior of the subgen
 ```js
 {
 	"uirouter": false,
-	"partialDirectory": "partial/",
-	"directiveDirectory": "directive/",
-	"serviceDirectory": "service/",
-	"filterDirectory": "filter/",
+	"templateDirectory": "templates/",
+	"directiveDirectory": "directives/",
+	"serviceDirectory": "services/",
+	"filterDirectory": "filters/",
 	"partialTemplates": "templates/partial",
 	"directiveSimpleTemplates": "templates/simpleDirective",
 	"directiveComplexTemplates": "templates/complexDirective",
@@ -68,7 +68,7 @@ If a given template property is missing, the default templates will be used.
 
 ## Template Directories
 
-Each template directory can contain any number of files for a given subgenerator.  Each file will be read, run through the template engine, and then saved to the user specified destination.  The name of the destination file will be derived from the name of the template file by replacing the type word (partial/directive/filter/service) with the name of the component.  In other words, `partial-spec.js` becomes `whatever-spec.js`.
+Each template directory can contain any number of files for a given subgenerator.  Each file will be read, run through the template engine, and then saved to the user specified destination.  The name of the destination file will be derived from the name of the template file by replacing the type word (template/directive/filter/service) with the name of the component.  In other words, `template-spec.js` becomes `whatever-spec.js`.
 
 ### Template variables
 
@@ -77,5 +77,5 @@ All templates are valid underscore templates using the standard ERB-style delimi
 * `appname` - name of the Angular app/module name
 * `name` - the name of the component entered by the user
 * `dir` - the name of the directory where the component will be placed (includes trailing backslash)
-* `ctrlname` - (partials only) name of the controller
+* `ctrlname` - (templates only) name of the controller
 * `_` - Underscore.js with Underscore.string mixed in.  This allows you to use code like `<%= _.camelize(name) %>` in the templates.
