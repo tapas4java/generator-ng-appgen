@@ -1,16 +1,31 @@
 'use strict';
 var util = require('util');
 var yeoman = require('yeoman-generator');
+var path = require('path');
+var cgUtils = require('../utils.js');
+var chalk = require('chalk');
+var _ = require('underscore');
+var fs = require('fs');
 
+_.str = require('underscore.string');
+_.mixin(_.str.exports());
 
-var AnicationGenerator = yeoman.generators.NamedBase.extend({
-  initializing: function () {
-    this.log('You called the anication subgenerator with the argument ' + this.name + '.');
-  },
+var FilterGenerator = module.exports = function FilterGenerator(args, options, config) {
 
-  writing: function () {
-    this.src.copy('somefile.js', 'somefile.js');
-  }
-});
+	yeoman.generators.NamedBase.apply(this, arguments);
 
-module.exports = AnicationGenerator;
+};
+
+util.inherits(FilterGenerator, yeoman.generators.NamedBase);
+
+FilterGenerator.prototype.askFor = function askFor() {
+    var cb = this.async();
+
+    cgUtils.askForModuleAndDir('filter',this,false,cb);
+};
+
+FilterGenerator.prototype.files = function files() {
+
+    cgUtils.processTemplates(this.name,this.dir,'filter',this,null,null,this.module);
+
+};

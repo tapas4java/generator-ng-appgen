@@ -1,43 +1,62 @@
 {
-  "name": "generator-anication",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
-  "license": "MIT",
-  "main": "app/index.js",
-  "repository": "tapas4java/generator-anication",
-  "author": {
-    "name": "Tapas",
-    "email": "tapas.friends@gmail.com",
-    "url": "https://github.com/tapas4java"
+  "name": "generator-ngappgen",
+  "version": "1.0.0",
+  "description": "Yeoman Generator for Enterprise Angular projects.",
+  "keywords": [
+    "yeoman-generator",
+    "angular"
+  ],
+  "homepage": "https://github.com/tapas4java/generator-ngappgen",
+  "bugs": {
+    "url": "https://github.com/tapas4java/generator-ngappgen/issues"
   },
-  "engines": {
-    "node": ">=0.10.0"
+  "author": {
+    "name": "Tapas Jena",
+    "email": "tapas.friends@gmail.com",
+    "url": "https://www.anitechcs.com"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tapas4java/generator-ngappgen.git"
   },
   "scripts": {
     "test": "mocha"
   },
-  "files": [
-    "app",
-    "directive",
-    "partial",
-    "service",
-    "filter",
-    "module",
-    "modal",
-    "controller"
-  ],
-  "keywords": [
-    "yeoman-generator"
-  ],
   "dependencies": {
-    "yeoman-generator": "^0.17.0",
-    "chalk": "^0.5.0",
-    "yosay": "^0.3.0"
+    "underscore": "~1.5",
+    "underscore.string": "~2.3",
+    "yeoman-generator": "~0.16",
+    "chalk": "~0.4.0",
+    "ng-parse-module": "~0.1.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "~1.10.0"
   },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
-  }
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "license": "Apache License 2.0",
+  "gitHead": "b914a9ee640da4a50a62261965a2a338799256cd",
+  "_id": "generator-ngappgen@1.0.0",
+  "_shasum": "fea9925b26b050e35855a5b0fea5b8237d1e5a7a",
+  "_from": "generator-ngappgen@",
+  "_npmVersion": "1.5.0-alpha-1",
+  "_npmUser": {
+    "name": "tapas4java",
+    "email": "tapas.friends@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "Tapas Jena",
+      "email": "tapas.friends@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "fea9925b26b050e35855a5b0fea5b8237d1e5a7a",
+    "tarball": "http://registry.npmjs.org/generator-ngappgen/-/generator-ngappgen-1.0.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "http://registry.npmjs.org/generator-ngappgen/-/generator-ngappgen-1.0.0.tgz",
+  "readme": "ERROR: No README data found!"
 }

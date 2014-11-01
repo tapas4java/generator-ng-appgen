@@ -2,53 +2,82 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+var cgUtils = require('../utils.js');
 
-var AnicationGenerator = yeoman.generators.Base.extend({
-  initializing: function () {
-    this.pkg = require('../package.json');
-  },
+var CgangularGenerator = module.exports = function CgangularGenerator(args, options, config) {
+    yeoman.generators.Base.apply(this, arguments);
 
-  prompting: function () {
-    var done = this.async();
+    this.on('end', function () {
+        this.config.set('partialDirectory','partial/');
+        this.config.set('directiveDirectory','directive/');
+        this.config.set('filterDirectory','filter/');
+        this.config.set('serviceDirectory','service/');
+        var inject = {
+            js: {
+                file: 'index.html',
+                marker: cgUtils.JS_MARKER,
+                template: '<script src="<%= filename %>"></script>'
+            },
+            less: {
+                relativeToModule: true,
+                file: '<%= module %>.less',
+                marker: cgUtils.LESS_MARKER,
+                template: '@import "<%= filename %>";'
+            }
+        };
+        this.config.set('inject',inject);
+        this.config.save();
+        this.installDependencies({ skipInstall: options['skip-install'] });
+    });
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the grand Anication generator!'
-    ));
+    this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+};
+
+util.inherits(CgangularGenerator, yeoman.generators.Base);
+
+CgangularGenerator.prototype.askFor = function askFor() {
+    var cb = this.async();
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+        name: 'appname',
+        message: 'What would you like the angular app/module name to be?',
+        default: path.basename(process.cwd())
     }];
 
     this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
-
-      done();
+        this.appname = props.appname;
+        cb();
     }.bind(this));
-  },
+};
 
-  writing: {
-    app: function () {
-      this.dest.mkdir('app');
-      this.dest.mkdir('app/templates');
+CgangularGenerator.prototype.askForUiRouter = function askFor() {
+    var cb = this.async();
 
-      this.src.copy('_package.json', 'package.json');
-      this.src.copy('_bower.json', 'bower.json');
-    },
+    var prompts = [{
+        name: 'router',
+        type:'list',
+        message: 'Which router would you like to use?',
+        default: 0,
+        choices: ['Standard Angular Router','Angular UI Router']
+    }];
 
-    projectfiles: function () {
-      this.src.copy('editorconfig', '.editorconfig');
-      this.src.copy('jshintrc', '.jshintrc');
-    }
-  },
+    this.prompt(prompts, function (props) {
+        if (props.router === 'Angular UI Router') {
+            this.uirouter = true;
+            this.routerJs = 'bower_components/angular-ui-router/release/angular-ui-router.js';
+            this.routerModuleName = 'ui.router';
+            this.routerViewDirective = 'ui-view';
+        } else {
+            this.uirouter = false;
+            this.routerJs = 'bower_components/angular-route/angular-route.js';
+            this.routerModuleName = 'ngRoute';
+            this.routerViewDirective = 'ng-view';
+        }
+        this.config.set('uirouter',this.uirouter);
+        cb();
+    }.bind(this));
+};
 
-  end: function () {
-    this.installDependencies();
-  }
-});
-
-module.exports = AnicationGenerator;
+CgangularGenerator.prototype.app = function app() {
+    this.directory('skeleton/','./');
+};
