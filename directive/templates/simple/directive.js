@@ -9,13 +9,15 @@
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
     angular.module('<%= appname %>').directive('<%= _.camelize(name) %>', function() {
+
+        //TODO: Implement your directive logic here
         return {
             restrict: 'A',
             link: function(scope, element, attrs, fn) {
 
-
             }
         };
+
     });
 
 })();

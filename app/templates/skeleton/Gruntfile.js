@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         options: {
           port: 9000,
           open: {
-              target: 'http://localhost:9000/',
+              target: 'http://localhost:9000/app',
               appName: 'Chrome'
           }
         }
@@ -80,7 +80,7 @@ module.exports = function (grunt) {
         options: {
         },
         files: {
-          'temp/app.css': 'app.less'
+          'temp/app.css': 'app/app.less'
         }
       }
     },
@@ -113,7 +113,7 @@ module.exports = function (grunt) {
             {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
           ]
         },
-        src: 'index.html'
+        src: 'app/index.html'
       },
       update: {
         options: {
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
             {selector:'head',html:'<link rel="stylesheet" href="app.full.min.css">'}
           ]
         },
-        src:'index.html',
+        src:'app/index.html',
         dest: 'dist/index.html'
       }
     },
@@ -231,7 +231,7 @@ module.exports = function (grunt) {
 
     //if index.html changed, we need to reread the <script> tags so our next run of karma
     //will have the correct environment
-    if (filepath === 'index.html') {
+    if (filepath === 'index.html') {//Tapas:Need to check later if got an issue
       tasksToRun.push('dom_munger:read');
     }
 

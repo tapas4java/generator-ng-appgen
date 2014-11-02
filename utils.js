@@ -13,23 +13,23 @@ exports.LESS_MARKER = "/* Add Component LESS Above */";
 exports.ROUTE_MARKER = "/* Add New Routes Above */";
 exports.STATE_MARKER = "/* Add New States Above */";
 
-exports.addToFile = function(filename,lineToAdd,beforeMarker){
+exports.addToFile = function(filename, lineToAdd, beforeMarker){
 	try {
-		var fullPath = path.resolve(process.cwd(),filename);
+		var fullPath = path.resolve(process.cwd(), filename);
 		var fileSrc = fs.readFileSync(fullPath,'utf8');
 
 		var indexOf = fileSrc.indexOf(beforeMarker);
         var lineStart = fileSrc.substring(0,indexOf).lastIndexOf('\n') + 1;
         var indent = fileSrc.substring(lineStart,indexOf);
-		fileSrc = fileSrc.substring(0,indexOf) + lineToAdd + "\n" + indent + fileSrc.substring(indexOf);
+		fileSrc = fileSrc.substring(0, indexOf) + lineToAdd + "\n" + indent + fileSrc.substring(indexOf);
 
-		fs.writeFileSync(fullPath,fileSrc);
+		fs.writeFileSync(fullPath, fileSrc);
 	} catch(e) {
 		throw e;
 	}
 };
 
-exports.processTemplates = function(name,dir,type,that,defaultDir,configName,module){
+exports.processTemplates = function(name, dir, type, that, defaultDir, configName, module){
 
     if (!defaultDir) {
         defaultDir = 'templates'
@@ -38,25 +38,26 @@ exports.processTemplates = function(name,dir,type,that,defaultDir,configName,mod
         configName = type + 'Templates';
     }
 
-    var templateDirectory = path.join(path.dirname(that.resolved),defaultDir);
+    var templateDirectory = path.join(path.dirname(that.resolved), defaultDir);
     if(that.config.get(configName)){
-        templateDirectory = path.join(process.cwd(),that.config.get(configName));
+        templateDirectory = path.join(process.cwd(), that.config.get(configName));
     }
+
     _.chain(fs.readdirSync(templateDirectory))
         .filter(function(template){
             return template[0] !== '.';
         })
         .each(function(template){
-            var customTemplateName = template.replace(type,name);
-            var templateFile = path.join(templateDirectory,template);
+            var customTemplateName = template.replace(type, name);
+            var templateFile = path.join(templateDirectory, template);
             //create the file
-            that.template(templateFile,path.join(dir,customTemplateName));
+            that.template(templateFile, path.join(dir, customTemplateName));
             //inject the file reference into index.html/app.less/etc as appropriate
-            exports.inject(path.join(dir,customTemplateName),that,module);
+            exports.inject(path.join(dir, customTemplateName), that, module);
         });
 };
 
-exports.inject = function(filename,that,module) {
+exports.inject = function(filename, that, module) {
     //special case to skip unit tests
     if (_(filename).endsWith('-spec.js') ||
         _(filename).endsWith('_spec.js') ||
@@ -71,25 +72,40 @@ exports.inject = function(filename,that,module) {
     }
     var config = that.config.get('inject')[ext];
     if (config) {
-        var configFile = _.template(config.file)({module:path.basename(module.file,'.js')});
+        var configFile = _.template(config.file)({module:path.basename(module.file, '.js')});
         var injectFileRef = filename;
         if (config.relativeToModule) {
-            configFile = path.join(path.dirname(module.file),configFile);
-            injectFileRef = path.relative(path.dirname(module.file),filename);
+            configFile = path.join(path.dirname(module.file), configFile);
+            injectFileRef = path.relative(path.dirname(module.file), filename);
         }
+        //Added by Tapas to add app folder in place
+        if(injectFileRef.indexOf('app\\') > -1){
+            injectFileRef = injectFileRef.replace('app\\', '');
+        }
+        if(injectFileRef.indexOf('app/') > -1){
+            injectFileRef = injectFileRef.replace('app/', '');
+        }
+
         injectFileRef = injectFileRef.replace(/\\/g,'/');
         var lineTemplate = _.template(config.template)({filename:injectFileRef});
-        exports.addToFile(configFile,lineTemplate,config.marker);
-        that.log.writeln(chalk.green(' updating') + ' %s',path.basename(configFile));
+        exports.addToFile(configFile, lineTemplate, config.marker);
+        that.log.writeln(chalk.green(' updating') + ' %s', path.basename(configFile));
     }
 };
 
-exports.injectRoute = function(moduleFile,uirouter,name,route,routeUrl,that){
+exports.injectRoute = function(moduleFile, uirouter, name, route, routeUrl, that){
 
+    //Added by Tapas to add app folder in place
+    if(routeUrl.indexOf('app\\') > -1){
+        routeUrl = routeUrl.replace('app\\', '');
+    }
+    if(routeUrl.indexOf('app/') > -1){
+        routeUrl = routeUrl.replace('app/', '');
+    }
     routeUrl = routeUrl.replace(/\\/g,'/');
 
     if (uirouter){
-        var code = '$stateProvider.state(\''+name+'\', {\n        url: \''+route+'\',\n        templateUrl: \''+routeUrl+'\'\n    });';
+        var code = '$stateProvider.state(\''+name+'\', {\n            url: \''+route+'\',\n            templateUrl: \''+routeUrl+'\'\n\t\t});';
         exports.addToFile(moduleFile,code,exports.STATE_MARKER);
     } else {
         exports.addToFile(moduleFile,'$routeProvider.when(\''+route+'\',{templateUrl: \''+routeUrl+'\'});',exports.ROUTE_MARKER);
@@ -125,7 +141,7 @@ exports.getParentModule = function(dir){
 exports.askForModule = function(type,that,cb){
 
     var modules = that.config.get('modules');
-    var mainModule = ngParseModule.parse('app.js');
+    var mainModule = ngParseModule.parse('app/app.js');
     mainModule.primary = true;
 
     if (!modules || modules.length === 0) {
@@ -133,8 +149,9 @@ exports.askForModule = function(type,that,cb){
         return;
     }
 
-    var choices = _.pluck(modules,'name');
-    choices.unshift(mainModule.name + ' (Primary Application Module)');
+    var choices = _.pluck(modules, 'name');
+    //Tapas: commented
+    //choices.unshift(mainModule.name + ' (Primary Application Module)');
 
     var prompts = [
         {
@@ -163,7 +180,7 @@ exports.askForModule = function(type,that,cb){
 
 };
 
-exports.askForDir = function(type,that,module,ownDir,cb){
+exports.askForDir = function(type, that, module, ownDir, cb){
 
     that.module = module;
     that.appname = module.name;
@@ -173,14 +190,14 @@ exports.askForDir = function(type,that,module,ownDir,cb){
     if (!configedDir){
         configedDir = '.';
     }
-    var defaultDir = path.join(that.dir,configedDir,'/');
-    defaultDir = path.relative(process.cwd(),defaultDir);
+    var defaultDir = path.join(that.dir, configedDir,'/');
+    defaultDir = path.relative(process.cwd(), defaultDir);
 
     if (ownDir) {
-        defaultDir = path.join(defaultDir,that.name);
+        defaultDir = path.join(defaultDir, that.name);
     }
 
-    defaultDir = path.join(defaultDir,'/');
+    defaultDir = path.join(defaultDir, '/');
 
     var dirPrompt = [
         {
@@ -202,7 +219,7 @@ exports.askForDir = function(type,that,module,ownDir,cb){
 
     var dirPromptCallback = function (props) {
 
-        that.dir = path.join(props.dir,'/');
+        that.dir = path.join(props.dir, '/');
         var dirToCreate = that.dir;
         if (ownDir){
             dirToCreate = path.join(dirToCreate, '..');
@@ -217,7 +234,7 @@ exports.askForDir = function(type,that,module,ownDir,cb){
                 if (props.isConfirmed){
                     cb();
                 } else {
-                    that.prompt(dirPrompt,dirPromptCallback);
+                    that.prompt(dirPrompt, dirPromptCallback);
                 }
             });
         } else if (ownDir && fs.existsSync(that.dir)){
@@ -230,7 +247,7 @@ exports.askForDir = function(type,that,module,ownDir,cb){
                 if (props.isConfirmed){
                     cb();
                 } else {
-                    that.prompt(dirPrompt,dirPromptCallback);
+                    that.prompt(dirPrompt, dirPromptCallback);
                 }
             });
         } else {
@@ -239,12 +256,12 @@ exports.askForDir = function(type,that,module,ownDir,cb){
 
     };
 
-    that.prompt(dirPrompt,dirPromptCallback);
+    that.prompt(dirPrompt, dirPromptCallback);
 
 };
 
-exports.askForModuleAndDir = function(type,that,ownDir,cb) {
-    exports.askForModule(type,that,function(module){
-        exports.askForDir(type,that,module,ownDir,cb);
+exports.askForModuleAndDir = function(type, that, ownDir, cb) {
+    exports.askForModule(type, that, function(module){
+        exports.askForDir(type, that, module, ownDir, cb);
     });
 };

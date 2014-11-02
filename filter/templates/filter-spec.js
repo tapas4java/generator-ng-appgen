@@ -12,6 +12,7 @@
 
         beforeEach(module('<%= appname %>'));
 
+        //TODO: Implement your filter spec logic here
         it('should ...', inject(function($filter) {
 
             var filter = $filter('<%= _.camelize(name) %>');

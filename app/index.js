@@ -1,10 +1,11 @@
 'use strict';
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var cgUtils = require('../utils.js');
 
-var CgangularGenerator = module.exports = function CgangularGenerator(args, options, config) {
+var AppGenerator = module.exports = function AppGenerator(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
 
     this.on('end', function () {
@@ -13,9 +14,10 @@ var CgangularGenerator = module.exports = function CgangularGenerator(args, opti
         this.config.set('filterDirectory', 'filters/');
         this.config.set('serviceDirectory', 'services/');
         this.config.set('controllerDirectory', 'controllers/');
+        this.config.set('modalDirectory', 'modals/');
         var inject = {
             js: {
-                file: 'index.html',
+                file: 'app/index.html',
                 marker: cgUtils.JS_MARKER,
                 template: '<script src="<%= filename %>"></script>'
             },
@@ -26,7 +28,7 @@ var CgangularGenerator = module.exports = function CgangularGenerator(args, opti
                 template: '@import "<%= filename %>";'
             }
         };
-        this.config.set('inject',inject);
+        this.config.set('inject', inject);
         this.config.save();
         this.installDependencies({ skipInstall: options['skip-install'] });
     });
@@ -34,14 +36,14 @@ var CgangularGenerator = module.exports = function CgangularGenerator(args, opti
     this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(CgangularGenerator, yeoman.generators.Base);
+util.inherits(AppGenerator, yeoman.generators.Base);
 
-CgangularGenerator.prototype.askFor = function askFor() {
+AppGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
 
     var prompts = [{
         name: 'appname',
-        message: 'What would you like the angular app/module name to be?',
+        message: 'What would you like the angular application name to be?',
         default: path.basename(process.cwd())
     }];
 
@@ -51,7 +53,7 @@ CgangularGenerator.prototype.askFor = function askFor() {
     }.bind(this));
 };
 
-CgangularGenerator.prototype.askForUiRouter = function askFor() {
+AppGenerator.prototype.askForUiRouter = function askFor() {
     var cb = this.async();
 
     var prompts = [{
@@ -79,6 +81,6 @@ CgangularGenerator.prototype.askForUiRouter = function askFor() {
     }.bind(this));
 };
 
-CgangularGenerator.prototype.app = function app() {
-    this.directory('skeleton/','./');
+AppGenerator.prototype.app = function app() {
+    this.directory('skeleton/', './');
 };

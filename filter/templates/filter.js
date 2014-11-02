@@ -8,10 +8,13 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('<%= appname %>').filter('<%= _.camelize(name) %>', function() {
+    angular.module('<%= appname %>').filter('<%= _.camelize(name) %>', ['$scope', function($scope) {
+
+        //TODO: Implement your filter logic here
         return function(input,arg) {
             return 'output';
         };
-    });
+
+    }]);
 
 })();

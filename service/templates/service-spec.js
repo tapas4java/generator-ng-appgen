@@ -14,7 +14,8 @@
 
       it('should ...', inject(function(<%= _.camelize(name) %>) {
 
-        //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
+            //TODO: Implement your service spec logic here
+            //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
 
       }));
 

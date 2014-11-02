@@ -8,10 +8,11 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('<%= appname %>').controller('<%= _.camelize(name) %>', function() {
-        return function(input, arg) {
-            return 'output';
-        };
-    });
+    angular.module('<%= appname %>').controller('<%= _.camelize(name) %>', ['$scope', function($scope) {
+
+        //TODO: Implement your controller logic here
+        $scope.message = 'Bang Bang! Your application is up and running.';
+
+    }]);
 
 })();

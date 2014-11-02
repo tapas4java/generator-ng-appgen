@@ -19,6 +19,7 @@
         compile = $compile;
       }));
 
+      //TODO: Implement your directive spec logic here
       it('should ...', function() {
 
         /*

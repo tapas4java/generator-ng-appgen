@@ -31,13 +31,13 @@ TemplateGenerator.prototype.askFor = function askFor() {
 
     this.prompt(prompts, function (props) {
         this.route = props.route;
-        cgUtils.askForModuleAndDir('template', this, true, cb);
+        cgUtils.askForModuleAndDir('template', this, false, cb);
     }.bind(this));
 };
 
 TemplateGenerator.prototype.files = function files() {
 
-    this.ctrlname = _.camelize(_.classify(this.name)) + 'Ctrl';
+    //this.ctrlname = _.camelize(_.classify(this.name)) + 'Controller';
     this.templateName =  _.camelize(_.classify(this.name));
 
     cgUtils.processTemplates(this.name, this.dir, 'template', this, null, null, this.module);

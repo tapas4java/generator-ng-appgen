@@ -19,7 +19,7 @@ util.inherits(ModalGenerator, yeoman.generators.NamedBase);
 ModalGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
 
-    cgUtils.askForModuleAndDir('modal',this,true,cb);
+    cgUtils.askForModuleAndDir('modal', this, false, cb);
 };
 
 ModalGenerator.prototype.files = function files() {

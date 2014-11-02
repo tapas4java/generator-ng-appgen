@@ -8,11 +8,13 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('<%= appname %>').factory('<%= _.camelize(name) %>',function() {
+    angular.module('<%= appname %>').service('<%= _.camelize(name) %>', ['$http', function($http) {
 
-        var <%= _.camelize(name) %> = {};
+        //TODO: Implement your service logic here
+        this.getMessage = function(){
+            return 'Bang Bang! Your application is up and running.';
+        };
 
-        return <%= _.camelize(name) %>;
-    });
+    }]);
 
 })();

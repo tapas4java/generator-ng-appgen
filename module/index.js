@@ -23,7 +23,7 @@ util.inherits(ModuleGenerator, yeoman.generators.NamedBase);
 ModuleGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
     var name = this.name;
-    var defaultDir = path.join(this.name,'/');
+    var defaultDir = path.join('app/'+this.name, '/');
 
     var prompts = [
         {
@@ -41,8 +41,14 @@ ModuleGenerator.prototype.askFor = function askFor() {
     ];
 
     this.prompt(prompts, function (props) {
-        this.dir = path.join(props.dir,'/');
-        cb();
+        //Tapas: validation added
+        var enteredDir = props.dir;
+        if(enteredDir.indexOf('app') != 0){
+            this.log.writeln(chalk.red(' creating module outside of app directory is not allowed!') );
+        }else{
+            this.dir = path.join(props.dir, '/');
+            cb();
+        }
     }.bind(this));
 };
 
@@ -53,13 +59,13 @@ ModuleGenerator.prototype.files = function files() {
     module.save();
     this.log.writeln(chalk.green(' updating') + ' %s',path.basename(module.file));
 
-    cgUtils.processTemplates(this.name,this.dir,'module',this,null,null,module);
+    cgUtils.processTemplates(this.name, this.dir, 'module', this, null, null, module);
 
     var modules = this.config.get('modules');
     if (!modules) {
         modules = [];
     }
-    modules.push({name:_.camelize(this.name),file:path.join(this.dir,this.name + '.js')});
-    this.config.set('modules',modules);
+    modules.push({name:_.camelize(this.name), file:path.join(this.dir,this.name + '.js')});
+    this.config.set('modules', modules);
     this.config.save();
 };

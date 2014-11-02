@@ -12,13 +12,14 @@
 
       beforeEach(module('<%= appname %>'));
 
-      var scope,compile;
+      var scope, compile;
 
       beforeEach(inject(function($rootScope,$compile) {
         scope = $rootScope.$new();
         compile = $compile;
       }));
 
+      //TODO: Implement your complex directive spec logic here
       it('should ...', function() {
 
         /*
@@ -30,6 +31,7 @@
         */
 
       });
+
     });
 
 })();

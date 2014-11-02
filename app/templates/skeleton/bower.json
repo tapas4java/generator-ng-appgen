@@ -1,7 +1,7 @@
 {
   "name": "<%= _.slugify(appname) %>",
-  "version": "0.0.0",
-  "main": "index.html",
+  "version": "0.0.1",
+  "main": "app/index.html",
   "ignore": [
     "**/.*",
     "node_modules",

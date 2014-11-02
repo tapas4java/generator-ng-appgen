@@ -9,6 +9,8 @@
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
     angular.module('<%= appname %>').directive('<%= _.camelize(name) %>', function() {
+
+        //TODO: Implement your complex directive logic here
         return {
             restrict: 'E',
             replace: true,
@@ -18,9 +20,9 @@
             templateUrl: '<%= htmlPath %>',
             link: function(scope, element, attrs, fn) {
 
-
             }
         };
+
     });
 
 })();

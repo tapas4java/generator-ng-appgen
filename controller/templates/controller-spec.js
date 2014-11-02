@@ -10,10 +10,18 @@
      */
     describe('<%= _.camelize(name) %>', function() {
 
+        var scope, ctrl;
+
         beforeEach(module('<%= appname %>'));
+
+        beforeEach(inject(function($rootScope, $controller) {
+            scope = $rootScope.$new();
+            ctrl = $controller('<%= _.camelize(name) %>', {$scope: scope});
+        }));
 
         it('should ...', inject(function(<%= _.camelize(name) %>) {
 
+            //TODO: Implement your controller spec logic here
             //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
 
         }));
