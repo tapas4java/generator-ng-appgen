@@ -150,7 +150,7 @@ exports.askForModule = function(type,that,cb){
     }
 
     var choices = _.pluck(modules, 'name');
-    //Tapas: commented
+    //Tapas: commented as no need to show main app module in the list
     //choices.unshift(mainModule.name + ' (Primary Application Module)');
 
     var prompts = [
@@ -167,13 +167,13 @@ exports.askForModule = function(type,that,cb){
 
         var i = choices.indexOf(props.module);
 
-        var module;
-
-        if (i === 0) {
+        var module = ngParseModule.parse(modules[i].file);
+        //Tapas: No more required as we are not allowing user to add anything to main module
+        /*if (i === 0) {
             module = mainModule;
         } else {
             module = ngParseModule.parse(modules[i-1].file);
-        }
+        }*/
 
         cb.bind(that)(module);
     }.bind(that));
