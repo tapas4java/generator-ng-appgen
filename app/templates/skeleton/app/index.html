@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="<%= _.camelize(appname) %>">
 <head>
-  <title>ngappgen - Angular Application Generator</title>
+  <title>ngAppGen - Angular Application Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <link href="app.less" type="text/css" rel="stylesheet/less">
@@ -25,18 +25,26 @@
   <script src="../bower_components/angular-ui-utils/ui-utils.js"></script>
   <!-- Add New Bower Component JS Above -->
 
-
   <!-- Main App JS -->
   <script src="app.js"></script>
   <!-- Add New Component JS Above -->
 
-  <div>
-    <div id="content" class="container">
-      <div class="row">
-        <div <%= routerViewDirective %>>
-        </div>
+  <div class="fadeZoom">
+
+      <div class="navbar navbar-default navbar-static-top">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="/"><i class="ion-ios7-pulse-strong"></i> ngAppGen </a>
+          </div>
+          <ul class="nav navbar-nav">
+              <li><a href="/app/#/home">Home</a></li>
+              <li><a href="/app/#/help">Help</a></li>
+          </ul>
       </div>
-    </div>
+
+      <div id="content" class="container" <%= routerViewDirective %>>
+          <!-- Content will goes here -->
+      </div>
+
   </div>
 
 </body>

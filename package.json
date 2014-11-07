@@ -1,14 +1,14 @@
 {
-  "name": "generator-ngappgen",
+  "name": "generator-ng-appgen",
   "version": "1.0.0",
   "description": "Yeoman Generator for Enterprise Angular projects.",
   "keywords": [
     "yeoman-generator",
     "angular"
   ],
-  "homepage": "https://github.com/tapas4java/generator-ngappgen",
+  "homepage": "https://github.com/tapas4java/generator-ng-appgen",
   "bugs": {
-    "url": "https://github.com/tapas4java/generator-ngappgen/issues"
+    "url": "https://github.com/tapas4java/generator-ng-appgen/issues"
   },
   "author": {
     "name": "Tapas Jena",
@@ -18,7 +18,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tapas4java/generator-ngappgen.git"
+    "url": "https://github.com/tapas4java/generator-ng-appgen.git"
   },
   "scripts": {
     "test": "mocha"
@@ -38,9 +38,9 @@
   },
   "license": "Apache License 2.0",
   "gitHead": "b914a9ee640da4a50a62261965a2a338799256cd",
-  "_id": "generator-ngappgen@1.0.0",
+  "_id": "generator-ng-appgen@1.0.0",
   "_shasum": "fea9925b26b050e35855a5b0fea5b8237d1e5a7a",
-  "_from": "generator-ngappgen@",
+  "_from": "generator-ng-appgen@",
   "_npmVersion": "1.5.0-alpha-1",
   "_npmUser": {
     "name": "tapas4java",
@@ -54,9 +54,9 @@
   ],
   "dist": {
     "shasum": "fea9925b26b050e35855a5b0fea5b8237d1e5a7a",
-    "tarball": "http://registry.npmjs.org/generator-ngappgen/-/generator-ngappgen-1.0.0.tgz"
+    "tarball": "http://registry.npmjs.org/generator-ngappgen/-/generator-ng-appgen-1.0.0.tgz"
   },
   "directories": {},
-  "_resolved": "http://registry.npmjs.org/generator-ngappgen/-/generator-ngappgen-1.0.0.tgz",
+  "_resolved": "http://registry.npmjs.org/generator-ngappgen/-/generator-ng-appgen-1.0.0.tgz",
   "readme": "ERROR: No README data found!"
 }
