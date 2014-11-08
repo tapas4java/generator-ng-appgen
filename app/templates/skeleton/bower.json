@@ -8,20 +8,22 @@
     "bower_components"
   ],
   "dependencies": {
-    "jquery": "~2.0",
-    "underscore": "~1.5",
-    "bootstrap": "~3.1",
-    "angular": "~1.3.0",
-    <% if(uirouter) { print('"angular-ui-router": "~0.2",'); } else { print('"angular-route": "~1.2",'); } %>
-    "angular-animate": "~1.3.0",
-    "angular-resource": "~1.3.0",
-    "angular-cookies": "~1.3.0",
-    "angular-mocks": "~1.3.0",
+    "jquery": "~2.1.1",
+    "underscore": "~1.7.0",
+    "bootstrap": "~3.3.0",
+    "angular": "~1.3.2",
+    <% if(uirouter) { print('"angular-ui-router": "~0.2.11",'); } else { print('"angular-route": "~1.3.2",'); } %>
+    "angular-animate": "~1.3.2",
+    "angular-resource": "~1.3.2",
+    "angular-cookies": "~1.3.2",
+    "angular-mocks": "~1.3.2",
     "angular-ui-utils": "~0.1.1",
     "angular-bootstrap": "~0.11.2",
     "restangular": "~1.0.11",
     "moment": "~2.5",
-    "less.js": "~1.6",
-    "font-awesome": "~4.0"
+    "less.js": "~1.7.5",
+    "font-awesome": "~4.2.0",
+	"angular-loading-bar": "~0.6.0"
   }
+
 }

@@ -24,24 +24,19 @@
     "test": "mocha"
   },
   "dependencies": {
-    "underscore": "~1.5",
-    "underscore.string": "~2.3",
-    "yeoman-generator": "~0.16",
-    "chalk": "~0.4.0",
+    "underscore": "~1.7.0",
+    "underscore.string": "~2.3.3",
+    "yeoman-generator": "~0.17.7",
+    "chalk": "~0.5.1",
     "ng-parse-module": "~0.1.0"
   },
   "devDependencies": {
-    "mocha": "~1.10.0"
+    "mocha": "~2.0.1"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.32"
   },
   "license": "Apache License 2.0",
-  "gitHead": "b914a9ee640da4a50a62261965a2a338799256cd",
-  "_id": "generator-ng-appgen@1.0.0",
-  "_shasum": "fea9925b26b050e35855a5b0fea5b8237d1e5a7a",
-  "_from": "generator-ng-appgen@",
-  "_npmVersion": "1.5.0-alpha-1",
   "_npmUser": {
     "name": "tapas4java",
     "email": "tapas.friends@gmail.com"
@@ -51,12 +46,5 @@
       "name": "Tapas Jena",
       "email": "tapas.friends@gmail.com"
     }
-  ],
-  "dist": {
-    "shasum": "fea9925b26b050e35855a5b0fea5b8237d1e5a7a",
-    "tarball": "http://registry.npmjs.org/generator-ngappgen/-/generator-ng-appgen-1.0.0.tgz"
-  },
-  "directories": {},
-  "_resolved": "http://registry.npmjs.org/generator-ngappgen/-/generator-ng-appgen-1.0.0.tgz",
-  "readme": "ERROR: No README data found!"
+  ]
 }

@@ -8,21 +8,21 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    describe('<%= _.camelize(name) %>', function() {
+    describe('helpController', function() {
 
         var scope, ctrl;
 
-        beforeEach(module('<%= appname %>'));
+        beforeEach(module('help'));
 
         beforeEach(inject(function($rootScope, $controller) {
             scope = $rootScope.$new();
-            ctrl = $controller('<%= _.camelize(name) %>', {$scope: scope});
+            ctrl = $controller('helpController', {$scope: scope});
         }));
 
-        it('should ...', inject(function(<%= _.camelize(name) %>) {
+        it('should ...', inject(function(helpController) {
 
             //TODO: Implement your controller spec logic here
-            //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
+            //expect(helpController.doSomething()).toEqual('something');
 
         }));
 

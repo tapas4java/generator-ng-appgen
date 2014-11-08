@@ -5,14 +5,14 @@
     var helpers = require('yeoman-generator').test;
 
 
-    describe('ngappgen generator', function () {
+    describe('ng-appgen generator', function () {
       beforeEach(function (done) {
         helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
           if (err) {
             return done(err);
           }
 
-          this.app = helpers.createGenerator('ngappgen:app', [
+          this.app = helpers.createGenerator('ng-appgen:app', [
             '../../app'
           ]);
           done();

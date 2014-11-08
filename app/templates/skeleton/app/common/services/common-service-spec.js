@@ -8,14 +8,14 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    describe('<%= _.camelize(name) %>', function() {
+    describe('commonService', function() {
 
-      beforeEach(module('<%= appname %>'));
+      beforeEach(module('common'));
 
-      it('should ...', inject(function(<%= _.camelize(name) %>) {
+      it('should ...', inject(function(commonService) {
 
             //TODO: Implement your service spec logic here
-            //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
+            //expect(commonService.doSomething()).toEqual('something');
 
       }));
 

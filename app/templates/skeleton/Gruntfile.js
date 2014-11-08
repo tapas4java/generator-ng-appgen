@@ -231,7 +231,7 @@ module.exports = function (grunt) {
 
     //if index.html changed, we need to reread the <script> tags so our next run of karma
     //will have the correct environment
-    if (filepath === 'index.html') {//Tapas:Need to check later if got an issue
+    if (filepath === 'app/index.html') {
       tasksToRun.push('dom_munger:read');
     }
 

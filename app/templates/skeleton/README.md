@@ -1,4 +1,4 @@
-#generator-ngappgen
+#generator-ng-appgen
 
 >Yeoman Generator for Enterprise Angular Projects
 
@@ -71,13 +71,13 @@ Prerequisites: Node, Grunt, Yeoman, and Bower.  Once Node is installed, do:
 
 Next, install this generator:
 
-    npm install -g generator-ngappgen
+    npm install -g generator-ng-appgen
 
 To create a project:
 
     mkdir MyApp
     cd MyApp
-    yo ngappgen
+    yo ng-appgen
 
 Grunt Tasks
 -------------
@@ -104,13 +104,13 @@ There are generators for `directive`, `template`, `service`, `filter`, `module`,
 
 Running a generator:
 
-    yo ngappgen:directive my-awesome-directive
-    yo ngappgen:template my-template
-    yo ngappgen:service my-service
-    yo ngappgen:service my-controller
-    yo ngappgen:filter my-filter
-    yo ngappgen:module my-module
-    yo ngappgen:modal my-modal
+    yo ng-appgen:directive my-awesome-directive
+    yo ng-appgen:template my-template
+    yo ng-appgen:service my-service
+    yo ng-appgen:service my-controller
+    yo ng-appgen:filter my-filter
+    yo ng-appgen:module my-module
+    yo ng-appgen:modal my-modal
 
 The name paramater passed (i.e. 'my-awesome-directive') will be used as the file names.  The generators will derive appropriate class names from this parameter (ex. 'my-awesome-directive' will convert to a class name of 'MyAwesomeDirective').  Each sub-generator will ask for the folder in which to create the new skeleton files.  You may override the default folder for each sub-generator in the `.yo-rc.json` file.
 

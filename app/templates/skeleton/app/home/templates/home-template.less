@@ -1,0 +1,104 @@
+.navbar {
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+}
+
+.navbar-header {
+  float: left;
+  padding-left: 15px;
+}
+
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+
+.navbar-nav > li {
+  float: left;
+}
+
+.navbar-nav > li > a {
+  padding: 15px;
+}
+
+.navbar-default {
+  color: #fff;
+  background: #fff;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-brand {
+  color: #030300;
+  background-color: #0080ff;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #0080FF;
+  background-color: #030300;
+}
+
+.navbar-brand {
+  margin-left: -15px;
+  transition: 0.25s all;
+}
+
+/*********************
+* Animations
+*********************/
+
+.fadeZoom.ng-enter {
+  -webkit-animation-duration: 0.6s, 0.2s;
+  -moz-animation-duration: 0.2s, 0.2s;
+  -ms-animation-duration: 0.2s, 0.2s;
+  animation-duration: 0.2, 0.2s;
+  -webkit-animation-name: fadeIn, zoomIn;
+  -moz-animation-name: fadeIn, zoomIn;
+  -ms-animation-name: fadeIn, zoomIn;
+  animation-name: fadeIn, zoomIn;
+}
+
+.fadeZoomFadeDown.ng-enter {
+  -webkit-animation-duration: 0.2s, 0.2s;
+  -moz-animation-duration: 0.2s, 0.2s;
+  -ms-animation-duration: 0.2s, 0.2s;
+  animation-duration: 0.2s, 0.2s;
+  -webkit-animation-name: fadeIn, zoomIn;
+  -moz-animation-name: fadeIn, zoomIn;
+  -ms-animation-name: fadeIn, zoomIn;
+  animation-name: fadeIn, zoomIn;
+}
+
+.fadeZoomFadeDown.ng-leave {
+  -webkit-animation: fadeOutDown 0.2s;
+  -moz-animation: fadeOutDown 0.2s;
+  -ms-animation: fadeOutDown 0.2s;
+  animation: fadeOutDown 0.2s;
+}
+
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.8, 0.8, 0.8);
+    -moz-transform: scale3d(0.8, 0.8, 0.8);
+    -ms-transform: scale3d(0.8, 0.8, 0.8);
+    transform: scale3d(0.8, 0.8, 0.8);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.8, 0.8, 0.8);
+    -moz-transform: scale3d(0.8, 0.8, 0.8);
+    -ms-transform: scale3d(0.8, 0.8, 0.8);
+    transform: scale3d(0.8, 0.8, 0.8);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

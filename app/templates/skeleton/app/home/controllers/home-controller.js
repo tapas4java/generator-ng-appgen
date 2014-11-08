@@ -8,9 +8,10 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('<%= appname %>').controller('<%= _.camelize(name) %>', ['$scope', function($scope) {
+    angular.module('home').controller('homeController', ['$scope', 'homeService', function($scope, homeService) {
 
-        //TODO: Implement your controller logic here
+        // get message from service
+        $scope.message = homeService.getMessage();
 
     }]);
 

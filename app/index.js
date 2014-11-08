@@ -29,6 +29,21 @@ var AppGenerator = module.exports = function AppGenerator(args, options, config)
             }
         };
         this.config.set('inject', inject);
+        var defaultModules = [
+            {
+                "name": "home",
+                "file": path.join('app/home', 'home.js')
+            },
+            {
+                "name": "help",
+                "file": path.join('app/help', 'help.js')
+            },
+            {
+                "name": "common",
+                "file": path.join('app/common', 'common.js')
+            }
+        ];
+        this.config.set('modules', defaultModules);
         this.config.save();
         this.installDependencies({ skipInstall: options['skip-install'] });
     });
@@ -60,12 +75,12 @@ AppGenerator.prototype.askForUiRouter = function askFor() {
         name: 'router',
         type:'list',
         message: 'Which router would you like to use?',
-        default: 0,
-        choices: ['Standard Angular Router','Angular UI Router']
+        default: 1,
+        choices: ['Standard Angular Router(ngRoute)', 'Angular UI Router(ui.router)']
     }];
 
     this.prompt(prompts, function (props) {
-        if (props.router === 'Angular UI Router') {
+        if (props.router === 'Angular UI Router(ui.router)') {
             this.uirouter = true;
             this.routerJs = 'bower_components/angular-ui-router/release/angular-ui-router.js';
             this.routerModuleName = 'ui.router';

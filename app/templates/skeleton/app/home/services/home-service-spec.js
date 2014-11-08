@@ -8,14 +8,14 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    describe('<%= _.camelize(name) %>', function() {
+    describe('homeService', function() {
 
-      beforeEach(module('<%= appname %>'));
+      beforeEach(module('home'));
 
-      it('should ...', inject(function(<%= _.camelize(name) %>) {
+      it('should ...', inject(function(homeService) {
 
             //TODO: Implement your service spec logic here
-            //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
+            //expect(homeService.doSomething()).toEqual('something');
 
       }));
 
