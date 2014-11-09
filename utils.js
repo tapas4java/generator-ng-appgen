@@ -50,8 +50,18 @@ exports.processTemplates = function(name, dir, type, that, defaultDir, configNam
         .each(function(template){
             var customTemplateName = template.replace(type, name);
             var templateFile = path.join(templateDirectory, template);
-            //create the file
-            that.template(templateFile, path.join(dir, customTemplateName));
+
+            //create the file in respective folder
+            if (_(customTemplateName).endsWith('-spec.js') ||
+                _(customTemplateName).endsWith('_spec.js') ||
+                _(customTemplateName).endsWith('-test.js') ||
+                _(customTemplateName).endsWith('_test.js')) {
+                var testDirLocation = dir.replace('app', 'test/specs');
+                that.template(templateFile, path.join(testDirLocation, customTemplateName));
+            }else{
+                that.template(templateFile, path.join(dir, customTemplateName));
+            }
+
             //inject the file reference into index.html/app.less/etc as appropriate
             exports.inject(path.join(dir, customTemplateName), that, module);
         });

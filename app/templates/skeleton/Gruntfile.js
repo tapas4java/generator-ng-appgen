@@ -10,22 +10,22 @@ var pkg = require('./package.json');
 //This enables users to create any directory structure they desire.
 var createFolderGlobs = function(fileTypePatterns) {
   fileTypePatterns = Array.isArray(fileTypePatterns) ? fileTypePatterns : [fileTypePatterns];
-  var ignore = ['node_modules','bower_components','dist','temp'];
+  var ignore = ['node_modules','bower_components','dist','temp','test'];
   var fs = require('fs');
   return fs.readdirSync(process.cwd())
           .map(function(file){
             if (ignore.indexOf(file) !== -1 ||
                 file.indexOf('.') === 0 ||
                 !fs.lstatSync(file).isDirectory()) {
-              return null;
+                return null;
             } else {
-              return fileTypePatterns.map(function(pattern) {
-                return file + '/**/' + pattern;
-              });
+                return fileTypePatterns.map(function(pattern) {
+                    return file + '/**/' + pattern;
+                });
             }
           })
           .filter(function(patterns){
-            return patterns;
+                return patterns;
           })
           .concat(fileTypePatterns);
 };
@@ -176,31 +176,41 @@ module.exports = function (grunt) {
         }]
       }
     },
+
+    /**
+    * The Karma configurations.
+    */
     karma: {
-      options: {
-        frameworks: ['jasmine'],
-        files: [  //this files data is also updated in the watch handler, if updated change there too
-          '<%%= dom_munger.data.appjs %>',
-          'bower_components/angular-mocks/angular-mocks.js',
-          createFolderGlobs('*-spec.js')
-        ],
-        logLevel:'ERROR',
-        reporters:['mocha'],
-        autoWatch: false, //watching is handled by grunt-contrib-watch
-        singleRun: true
+      unit: {
+          configFile: 'test/karma.conf.js',
+          background: true
       },
-      all_tests: {
-        browsers: ['PhantomJS','Chrome','Firefox']
-      },
-      during_watch: {
-        browsers: ['PhantomJS']
-      },
+      continuous: {
+          configFile: 'test/karma.conf.js',
+          singleRun: true
+      }
+    },
+
+    /**
+    * Protractor configuration
+    */
+    protractor: {
+      e2e: {
+          options: {
+              configFile: "test/protractor.conf.js", // Target-specific config file
+              args: {
+                  // Arguments passed to the command
+              }
+          }
+      }
     }
+
   });
 
-  grunt.registerTask('build',['jshint','clean:before','less','dom_munger','ngtemplates','cssmin','concat','ngmin','uglify','copy','htmlmin','imagemin','clean:after']);
-  grunt.registerTask('serve', ['dom_munger:read','jshint','connect', 'watch']);
-  grunt.registerTask('test',['dom_munger:read','karma:all_tests']);
+  grunt.registerTask('build', ['jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngmin', 'uglify', 'copy', 'htmlmin', 'imagemin', 'clean:after']);
+  grunt.registerTask('run', ['dom_munger:read', 'jshint', 'connect', 'watch']);
+  grunt.registerTask('test', ['dom_munger:read', 'karma']);
+  grunt.registerTask('e2e', ['dom_munger:read', 'protractor']);
 
   grunt.event.on('watch', function(action, filepath) {
     //https://github.com/gruntjs/grunt-contrib-watch/issues/156
@@ -238,4 +248,5 @@ module.exports = function (grunt) {
     grunt.config('watch.main.tasks',tasksToRun);
 
   });
+
 };
