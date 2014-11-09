@@ -139,7 +139,7 @@ module.exports = function (grunt) {
         dest: 'temp/app.full.js'
       }
     },
-    ngmin: {
+    ngAnnotate: {
       main: {
         src:'temp/app.full.js',
         dest: 'temp/app.full.js'
@@ -207,7 +207,7 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.registerTask('build', ['jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngmin', 'uglify', 'copy', 'htmlmin', 'imagemin', 'clean:after']);
+  grunt.registerTask('build', ['jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify', 'copy', 'htmlmin', 'imagemin', 'clean:after']);
   grunt.registerTask('run', ['dom_munger:read', 'jshint', 'connect', 'watch']);
   grunt.registerTask('test', ['dom_munger:read', 'karma']);
   grunt.registerTask('e2e', ['dom_munger:read', 'protractor']);

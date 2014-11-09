@@ -8,10 +8,10 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('<%= appname %>').service('<%= _.camelize(name) %>', ['$http', '$q', function($http, $q) {
+    angular.module('<%= appname %>').service('<%= _.camelize(name) %>', function($http, $q) {
 
         //TODO: Implement your service logic here
 
-    }]);
+    });
 
 })();

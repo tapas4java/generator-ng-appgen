@@ -8,10 +8,10 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('<%= appname %>').controller('<%= _.camelize(name) %>', ['$scope', function($scope) {
+    angular.module('<%= appname %>').controller('<%= _.camelize(name) %>', function($scope) {
 
         //TODO: Implement your controller logic here
 
-    }]);
+    });
 
 })();

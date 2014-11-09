@@ -8,11 +8,10 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('common').service('commonService', ['$http', '$q', function($http, $q) {
+    angular.module('common').service('commonService', function($http, $q) {
 
         //TODO: Implement your service logic here
 
-    }]);
-
+    });
 
 })();

@@ -8,10 +8,10 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('help').controller('helpController', ['$scope', 'loadContent', function($scope, loadContent) {
+    angular.module('help').controller('helpController', function($scope, loadContent) {
 
         $scope.helpContentList = loadContent;
 
-    }]);
+    });
 
 })();

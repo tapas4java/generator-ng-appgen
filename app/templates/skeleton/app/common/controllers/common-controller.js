@@ -8,11 +8,10 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('common').controller('commonController', ['$scope', function($scope) {
+    angular.module('common').controller('commonController', function($scope) {
 
         //TODO: Implement your controller logic here
 
-    }]);
-
+    });
 
 })();

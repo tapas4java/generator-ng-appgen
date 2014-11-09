@@ -8,7 +8,7 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('home').service('homeService', ['$http', '$q', function($http, $q) {
+    angular.module('home').service('homeService', function($http, $q) {
 
         var message = '';
 
@@ -20,6 +20,6 @@
             return message;
         };
 
-    }]);
+    });
 
 })();

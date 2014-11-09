@@ -8,11 +8,11 @@
      * @author: Tapas Jena
      * @copyright: Anitech Consulting Services Pvt Ltd.
      */
-    angular.module('home').controller('homeController', ['$scope', 'homeService', function($scope, homeService) {
+    angular.module('home').controller('homeController', function($scope, homeService) {
 
         // get message from service
         $scope.message = homeService.getMessage();
 
-    }]);
+    });
 
 })();
