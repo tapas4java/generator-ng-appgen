@@ -3,6 +3,7 @@
 
 var pkg = require('./package.json');
 
+
 //Using exclusion patterns slows down Grunt significantly
 //instead of creating a set of patterns like '**/*.js' and '!**/node_modules/**'
 //this method is used to create a set of inclusive patterns for all subdirectories
@@ -167,15 +168,21 @@ module.exports = function (grunt) {
         }
       }
     },
-    imagemin: {
-      main:{
-        files: [{
-          expand: true, cwd:'dist/',
-          src:['**/{*.png,*.jpg}'],
-          dest: 'dist/'
-        }]
-      }
-    },
+
+    //Imagemin has issues on Windows.
+    //To enable imagemin:
+    // - "npm install grunt-contrib-imagemin"
+    // - Comment in this section
+    // - Add the "imagemin" task after the "htmlmin" task in the build task alias
+    //imagemin: {
+    //  main:{
+    //    files: [{
+    //      expand: true, cwd:'dist/',
+    //      src:['**/{*.png,*.jpg}'],
+    //      dest: 'dist/'
+    //    }]
+    //  }
+    //},
 
     /**
     * The Karma configurations.
@@ -207,7 +214,7 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.registerTask('build', ['jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify', 'copy', 'htmlmin', 'imagemin', 'clean:after']);
+  grunt.registerTask('build', ['jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify', 'copy', 'htmlmin', 'clean:after']);
   grunt.registerTask('run', ['dom_munger:read', 'jshint', 'connect', 'watch']);
   grunt.registerTask('test', ['dom_munger:read', 'karma']);
   grunt.registerTask('e2e', ['dom_munger:read', 'protractor']);

@@ -12,13 +12,14 @@ _.mixin(_.str.exports());
 
 var ModuleGenerator = module.exports = function ModuleGenerator(args, options, config) {
 
-    yeoman.generators.NamedBase.apply(this, arguments);
+    cgUtils.getNameArg(this,args);
+    yeoman.generators.Base.apply(this, arguments);
 
     this.uirouter = this.config.get('uirouter');
     this.routerModuleName = this.uirouter ? 'ui.router' : 'ngRoute';
 };
 
-util.inherits(ModuleGenerator, yeoman.generators.NamedBase);
+util.inherits(ModuleGenerator, yeoman.generators.Base);
 
 ModuleGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
@@ -40,7 +41,11 @@ ModuleGenerator.prototype.askFor = function askFor() {
         }
     ];
 
+    cgUtils.addNamePrompt(this,prompts,'module');
     this.prompt(prompts, function (props) {
+        if (props.name){
+            this.name = props.name;
+        }
         //Tapas: validation added
         var enteredDir = props.dir;
         if(enteredDir.indexOf('app') != 0){

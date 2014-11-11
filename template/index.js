@@ -7,17 +7,19 @@ var cgUtils = require('../utils.js');
 var _ = require('underscore');
 var chalk = require('chalk');
 var fs = require('fs');
+var url = require('url');
 
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
 
 var TemplateGenerator = module.exports = function TemplateGenerator(args, options, config) {
 
-    yeoman.generators.NamedBase.apply(this, arguments);
+    cgUtils.getNameArg(this,args);
+    yeoman.generators.Base.apply(this, arguments);
 
 };
 
-util.inherits(TemplateGenerator, yeoman.generators.NamedBase);
+util.inherits(TemplateGenerator, yeoman.generators.Base);
 
 TemplateGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
@@ -29,8 +31,12 @@ TemplateGenerator.prototype.askFor = function askFor() {
         }
     ];
 
+    cgUtils.addNamePrompt(this,prompts,'template');
     this.prompt(prompts, function (props) {
-        this.route = props.route;
+        if (props.name){
+            this.name = props.name;
+        }
+        this.route = url.resolve('',props.route);
         cgUtils.askForModuleAndDir('template', this, false, cb);
     }.bind(this));
 };

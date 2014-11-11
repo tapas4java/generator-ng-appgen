@@ -12,16 +12,24 @@ _.mixin(_.str.exports());
 
 var ControllerGenerator = module.exports = function ControllerGenerator(args, options, config) {
 
-	yeoman.generators.NamedBase.apply(this, arguments);
+    cgUtils.getNameArg(this,args);
+    yeoman.generators.Base.apply(this, arguments);
 
 };
 
-util.inherits(ControllerGenerator, yeoman.generators.NamedBase);
+util.inherits(ControllerGenerator, yeoman.generators.Base);
 
 ControllerGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
 
-    cgUtils.askForModuleAndDir('controller', this, false, cb);
+    var prompts = [];
+    cgUtils.addNamePrompt(this, prompts, 'controller');
+    this.prompt(prompts, function (props) {
+        if (props.name){
+            this.name = props.name;
+        }
+        cgUtils.askForModuleAndDir('controller', this, false, cb);
+    }.bind(this));
 };
 
 ControllerGenerator.prototype.files = function files() {
