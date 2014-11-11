@@ -108,7 +108,7 @@ Running a generator:
     yo ng-appgen:directive my-directive
     yo ng-appgen:template my-template
     yo ng-appgen:service my-service
-    yo ng-appgen:service my-controller
+    yo ng-appgen:controller my-controller
     yo ng-appgen:filter my-filter
     yo ng-appgen:module my-module
     yo ng-appgen:modal my-modal
