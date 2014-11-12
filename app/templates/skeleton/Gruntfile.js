@@ -3,7 +3,6 @@
 
 var pkg = require('./package.json');
 
-
 //Using exclusion patterns slows down Grunt significantly
 //instead of creating a set of patterns like '**/*.js' and '!**/node_modules/**'
 //this method is used to create a set of inclusive patterns for all subdirectories
@@ -11,13 +10,11 @@ var pkg = require('./package.json');
 //This enables users to create any directory structure they desire.
 var createFolderGlobs = function(fileTypePatterns) {
   fileTypePatterns = Array.isArray(fileTypePatterns) ? fileTypePatterns : [fileTypePatterns];
-  var ignore = ['node_modules','bower_components','dist','temp','test'];
+  var ignore = ['node_modules','bower_components','dist','temp','test','data','assets'];
   var fs = require('fs');
   return fs.readdirSync(process.cwd())
           .map(function(file){
-            if (ignore.indexOf(file) !== -1 ||
-                file.indexOf('.') === 0 ||
-                !fs.lstatSync(file).isDirectory()) {
+            if (ignore.indexOf(file) !== -1 || file.indexOf('.') === 0 || !fs.lstatSync(file).isDirectory()) {
                 return null;
             } else {
                 return fileTypePatterns.map(function(pattern) {
@@ -91,18 +88,16 @@ module.exports = function (grunt) {
             module: pkg.name,
             htmlmin:'<%%= htmlmin.main.options %>'
         },
-        src: [createFolderGlobs('*.html'),'!index.html','!_SpecRunner.html'],
+        src: [createFolderGlobs('*.html'),'!app/index.html','!_SpecRunner.html'],
         dest: 'temp/templates.js'
       }
     },
     copy: {
       main: {
         files: [
-          {src: ['img/**'], dest: 'dist/'},
-          {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/',filter:'isFile',expand:true}
-          //{src: ['bower_components/angular-ui-utils/ui-utils-ieshiv.min.js'], dest: 'dist/'},
-          //{src: ['bower_components/select2/*.png','bower_components/select2/*.gif'], dest:'dist/css/',flatten:true,expand:true},
-          //{src: ['bower_components/angular-mocks/angular-mocks.js'], dest: 'dist/'}
+          {cwd: 'app', src: ['assets/**/*'], dest: 'dist/', expand: true},
+          {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/',filter:'isFile',expand:true},
+          {src: ['bower_components/bootstrap/fonts/**'], dest: 'dist/',filter:'isFile',expand:true}
         ]
       }
     },
