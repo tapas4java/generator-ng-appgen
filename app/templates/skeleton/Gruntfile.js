@@ -86,7 +86,8 @@ module.exports = function (grunt) {
       main: {
         options: {
             module: pkg.name,
-            htmlmin:'<%%= htmlmin.main.options %>'
+            htmlmin:'<%%= htmlmin.main.options %>',
+            url: function(url) { return url.replace('app/', ''); }
         },
         src: [createFolderGlobs('*.html'),'!app/index.html','!_SpecRunner.html'],
         dest: 'temp/templates.js'
@@ -105,7 +106,7 @@ module.exports = function (grunt) {
       read: {
         options: {
           read:[
-            {selector:'script[data-concat!="false"]',attribute:'src',writeto:'appjs'},
+            {selector:'script[data-concat!="false"]',attribute:'src',writeto:'appjs',isPath:true},
             {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
           ]
         },
