@@ -10,14 +10,20 @@
      */
     describe('commonService', function() {
 
-      beforeEach(module('common'));
+        var service;
 
-      it('should ...', inject(function(commonService) {
+        beforeEach(module('common'));
+
+        beforeEach(inject(function(commonService){
+            service = commonService;
+        }));
+
+        it('should ...', function() {
 
             //TODO: Implement your service spec logic here
-            //expect(commonService.doSomething()).toEqual('something');
+            //expect(service.doSomething()).toEqual('something');
 
-      }));
+        });
 
     });
 

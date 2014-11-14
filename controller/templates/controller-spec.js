@@ -19,12 +19,12 @@
             ctrl = $controller('<%= _.camelize(name) %>', {$scope: scope});
         }));
 
-        it('should ...', inject(function(<%= _.camelize(name) %>) {
+        it('should ...', function() {
 
             //TODO: Implement your controller spec logic here
-            //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
+            //expect(ctrl.doSomething()).toEqual('something');
 
-        }));
+        });
 
     });
 

@@ -10,14 +10,20 @@
      */
     describe('<%= _.camelize(name) %>', function() {
 
-      beforeEach(module('<%= appname %>'));
+        var service;
 
-      it('should ...', inject(function(<%= _.camelize(name) %>) {
+        beforeEach(module('<%= appname %>'));
+
+        beforeEach(inject(function(<%= _.camelize(name) %>){
+            service = <%= _.camelize(name) %>;
+        }));
+
+        it('should ...', function() {
 
             //TODO: Implement your service spec logic here
-            //expect(<%= _.camelize(name) %>.doSomething()).toEqual('something');
+            //expect(service.doSomething()).toEqual('something');
 
-      }));
+        });
 
     });
 

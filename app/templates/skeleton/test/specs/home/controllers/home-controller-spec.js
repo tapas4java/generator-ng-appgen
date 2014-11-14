@@ -19,12 +19,17 @@
             ctrl = $controller('homeController', {$scope: scope});
         }));
 
-        it('should ...', inject(function(homeController) {
+        it('should define the message property', function() {
 
-            //TODO: Implement your controller spec logic here
-            //expect(homeController.doSomething()).toEqual('something');
+            expect(scope.message).toBeDefined();
 
-        }));
+        });
+
+        it('should match with the message in scope', function() {
+
+            expect(scope.message).toEqual('Congratulations! Your app is fully up and running.');
+
+        });
 
     });
 

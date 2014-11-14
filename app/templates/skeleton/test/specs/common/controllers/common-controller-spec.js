@@ -19,12 +19,12 @@
             ctrl = $controller('commonController', {$scope: scope});
         }));
 
-        it('should ...', inject(function(commonController) {
+        it('should ...', function() {
 
             //TODO: Implement your controller spec logic here
-            //expect(commonController.doSomething()).toEqual('something');
+            //expect(ctrl.doSomething()).toEqual('something');
 
-        }));
+        });
 
     });
 

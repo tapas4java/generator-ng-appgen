@@ -10,14 +10,19 @@
      */
     describe('homeService', function() {
 
-      beforeEach(module('home'));
+        var service;
 
-      it('should ...', inject(function(homeService) {
+        beforeEach(module('home'));
 
-            //TODO: Implement your service spec logic here
-            //expect(homeService.doSomething()).toEqual('something');
+        beforeEach(inject(function(homeService){
+            service = homeService;
+        }));
 
-      }));
+        it('should return welcome message', function() {
+
+            expect(service.getMessage()).toEqual('Congratulations! Your app is fully up and running.');
+
+        });
 
     });
 

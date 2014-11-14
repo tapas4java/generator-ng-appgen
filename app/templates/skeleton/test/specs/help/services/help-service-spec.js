@@ -10,14 +10,19 @@
      */
     describe('helpService', function() {
 
-      beforeEach(module('help'));
+        var service;
 
-      it('should ...', inject(function(helpService) {
+        beforeEach(module('help'));
 
-            //TODO: Implement your service spec logic here
-            //expect(helpService.doSomething()).toEqual('something');
+        beforeEach(inject(function(helpService){
+            service = helpService;
+        }));
 
-      }));
+        it('should return the content', inject(function(helpService) {
+
+            expect(service.getHelpContent()).toBeDefined();
+
+        }));
 
     });
 
