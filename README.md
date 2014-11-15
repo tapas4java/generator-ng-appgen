@@ -119,8 +119,8 @@ This is the default application structure which you will get by running `yo ng-a
     					common-controller-spec.js .. common controller spec file
     				/services ...................... common module services test folder
     					common-service-spec.js ..... common service spec file
-    	/data ...................................... keep all your JSON files during development
-        /dist ...................................... distributable version of app built using grunt
+    	/data ...................................... your JSON data files during development
+        /dist ...................................... distributable version of application
         /bower_component ........................... 3rd party libraries managed by bower
         /node_modules .............................. npm managed libraries used by grunt    
         Gruntfile.js ............................... grunt configuration file
