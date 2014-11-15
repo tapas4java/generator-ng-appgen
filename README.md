@@ -1,4 +1,4 @@
-#generator-ng-appgen
+#generator-ng-appgen [![Build Status](https://travis-ci.org/tapas4java/generator-ng-appgen.svg)](https://travis-ci.org/tapas4java/generator-ng-appgen)
 
 >Yeomen/Angular app generator for enterprise applications with best folder structure and end to end development workflow support.
 
