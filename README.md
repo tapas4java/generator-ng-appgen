@@ -1,10 +1,11 @@
 #generator-ng-appgen
 
->Yeoman Generator for Enterprise Angular Projects
+>Yeomen/Angular app generator for enterprise applications with best folder structure and end to end development workflow support.
 
-This generator follows the [Angular Best Practice Guidelines for Project Structure](http://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html).
+This generator follows the angular best practice guidelines for code organization and code generation strategy which are really helpful for huge enterprise grade applications. Thanks to @[Chris Gross](https://github.com/cgross), this is customized on top of his [generator-cg-angular](https://github.com/cgross/generator-cg-angular).
 
 Features
+---------
 
 * Provides a directory structure geared towards large Angular projects.
     * Each controller, service, filter, and directive are placed in their own file.
@@ -17,7 +18,24 @@ Features
 * Integrates LESS and includes Bootstrap via the source LESS files allowing you to reuse Bootstrap vars/mixins/etc.
 * Easily Testable - Each sub-generator creates a skeleton unit test.  Unit tests can be run via `grunt test` and they run automatically during the grunt watch that is active during `grunt run`.
 
-Directory Layout
+Getting Started
+-------------
+
+Prerequisites: Node, Grunt, Yeoman, and Bower.  Once Node is installed, do:
+
+    npm install -g grunt-cli yo bower
+
+Next, install this generator:
+
+    npm install -g generator-ng-appgen
+
+To create a project:
+
+    mkdir MyApp
+    cd MyApp
+    yo ng-appgen
+
+Directory Structure
 -------------
 All subgenerators prompt the user to specify where to save the new files.  Thus you can create any directory structure you desire, including nesting.  The generator will create a handful of files in the root of your project including `index.html`, `app.js`, and `app.less`.  You determine how the rest of the project will be structured.
 
@@ -62,22 +80,6 @@ In this example, the user has chosen to group the app into an `admin` folder, a 
     /bower_component................ 3rd party libraries managed by bower
     /node_modules .................. npm managed libraries used by grunt
 
-Getting Started
--------------
-
-Prerequisites: Node, Grunt, Yeoman, and Bower.  Once Node is installed, do:
-
-    npm install -g grunt-cli yo bower
-
-Next, install this generator:
-
-    npm install -g generator-ng-appgen
-
-To create a project:
-
-    mkdir MyApp
-    cd MyApp
-    yo ng-appgen
 
 Grunt Tasks
 -------------
@@ -91,7 +93,7 @@ Now that the project is created, you have 3 simple Grunt commands available:
 
 When `grunt run` is running, any changed javascript files will be linted using JSHint as well as have their appropriate unit tests executed.  Only the unit tests that correspond to the changed file will be run.  This allows for an efficient test driven workflow.
 
-Yeoman Subgenerators
+Code Subgenerators
 -------------
 
 There are a set of subgenerators to initialize empty Angular components.  Each of these generators will:
@@ -116,11 +118,6 @@ Running a generator:
 The name paramater passed (i.e. 'my-directive') will be used as the file names.  The generators will derive appropriate class names from this parameter (ex. 'my-awesome-directive' will convert to a class name of 'MyAwesomeDirective').  Each sub-generator will ask for the folder in which to create the new skeleton files.  You may override the default folder for each sub-generator in the `.yo-rc.json` file.
 
 The modal subgenerator is a convenient shortcut to create templates that work as modals for Bootstrap v3.1 and Angular-UI-Bootstrap v0.10 (both come preconfigured with this generator).  If you choose not to use either of these libraries, simply don't use the modal subgenerator.
-
-Subgenerators are also customizable.  Please read [CUSTOMIZING.md](CUSTOMIZING.md) for details.
-
-Submodules
--------------
 
 Submodules allow you to more explicitly separate parts of your application.  Use the `yo ng-appgen:module my-module` command and specify a new subdirectory to place the module into.  Once you've created a submodule, running other subgenerators will now prompt you to select the module in which to place the new component.
 
@@ -157,3 +154,4 @@ Importantly, grunt-dom-munger uses CSS attribute selectors to manage the parsing
 Release History
 -------------
 * 01/11/2014 - v1.0.0 - Initial release of template as Yeoman generator.
+
