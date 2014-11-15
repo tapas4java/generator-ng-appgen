@@ -43,7 +43,7 @@ To create a project:
 NOTE: It will ask few questions like application name, router to use but you can just hit Enter as all prompts comes with default selection. Initially it will run `npm install` and `bower install` for downloadig all required dependent libraries for you.
 
 Boom! See your application in action:
-    
+
 
     grunt test - it will run unit test cases through karma
     grunt run  - it will open your chrome and run the application
@@ -122,7 +122,7 @@ This is the default application structure which you will get by running `yo ng-a
     	/data ...................................... your JSON data files during development
         /dist ...................................... distributable version of application
         /bower_component ........................... 3rd party libraries managed by bower
-        /node_modules .............................. npm managed libraries used by grunt    
+        /node_modules .............................. npm managed libraries used by grunt
         Gruntfile.js ............................... grunt configuration file
         package.json ............................... npm configuration file
     	bower.json ................................. bower configuration file
@@ -172,7 +172,7 @@ Running a generator:
     yo ng-appgen:module my-module
     yo ng-appgen:modal my-modal
 
-The name paramater passed (i.e. 'my-directive') will be used as the file names.  The generators will derive appropriate class names from this parameter (ex. 'my-directive' will convert to a class name of 'MyDirective').  Each sub-generator will ask for the folder(module) in which to create the new skeleton files. It will always prompt with default selection which is best for the application structure, we suggest not to change it. Just hit Enter.  
+The name paramater passed (i.e. 'my-directive') will be used as the file names.  The generators will derive appropriate class names from this parameter (ex. 'my-directive' will convert to a class name of 'MyDirective').  Each sub-generator will ask for the folder(module) in which to create the new skeleton files. It will always prompt with default selection which is best for the application structure, we suggest not to change it. Just hit Enter.
 
 The modal subgenerator is a convenient shortcut to create templates that work as modals for Bootstrap v3.1 and Angular-UI-Bootstrap v0.10 (both come preconfigured with this generator).  If you choose not to use either of these libraries, simply don't use the modal subgenerator.
 
@@ -209,5 +209,6 @@ Importantly, grunt-dom-munger uses CSS attribute selectors to manage the parsing
 Release History
 -------------
 
+* 15/11/2014 - v1.0.2 - Css loading removed from index.html and few optimizations on specs.
 * 15/11/2014 - v1.0.1 - Few fixes including 'grunt build' issue and few optimizations on tests.
 * 01/11/2014 - v1.0.0 - Initial release of template as Yeoman generator.

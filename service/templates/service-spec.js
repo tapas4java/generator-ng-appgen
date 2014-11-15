@@ -12,11 +12,13 @@
 
         var service;
 
-        beforeEach(module('<%= appname %>'));
+        beforeEach(function(){
+            module('<%= appname %>');
 
-        beforeEach(inject(function(<%= _.camelize(name) %>){
-            service = <%= _.camelize(name) %>;
-        }));
+            inject(function(<%= _.camelize(name) %>){
+                service = <%= _.camelize(name) %>;
+            });
+        });
 
         it('should ...', function() {
 

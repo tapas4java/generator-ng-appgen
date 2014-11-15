@@ -12,12 +12,14 @@
 
         var scope, ctrl;
 
-        beforeEach(module('home'));
+        beforeEach(function() {
+            module('home');
 
-        beforeEach(inject(function($rootScope, $controller) {
-            scope = $rootScope.$new();
-            ctrl = $controller('homeController', {$scope: scope});
-        }));
+            inject(function($rootScope, $controller) {
+                scope = $rootScope.$new();
+                ctrl = $controller('homeController', {$scope: scope});
+            });
+        });
 
         it('should define the message property', function() {
 

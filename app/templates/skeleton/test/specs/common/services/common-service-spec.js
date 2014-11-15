@@ -12,11 +12,13 @@
 
         var service;
 
-        beforeEach(module('common'));
+        beforeEach(function(){
+            module('common');
 
-        beforeEach(inject(function(commonService){
-            service = commonService;
-        }));
+            inject(function(commonService) {
+                service = commonService;
+            });
+        });
 
         it('should ...', function() {
 

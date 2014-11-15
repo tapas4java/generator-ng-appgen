@@ -12,12 +12,14 @@
 
         var scope, ctrl;
 
-        beforeEach(module('<%= appname %>'));
+        beforeEach(function() {
+            module('<%= appname %>');
 
-        beforeEach(inject(function($rootScope, $controller) {
-            scope = $rootScope.$new();
-            ctrl = $controller('<%= _.camelize(name) %>', {$scope: scope});
-        }));
+            inject(function($rootScope, $controller) {
+                scope = $rootScope.$new();
+                ctrl = $controller('<%= _.camelize(name) %>', {$scope: scope});
+            });
+        });
 
         it('should ...', function() {
 

@@ -12,11 +12,13 @@
 
         var service;
 
-        beforeEach(module('home'));
+        beforeEach(function(){
+            module('home');
 
-        beforeEach(inject(function(homeService){
-            service = homeService;
-        }));
+            inject(function(homeService){
+                service = homeService;
+            });
+        });
 
         it('should return welcome message', function() {
 

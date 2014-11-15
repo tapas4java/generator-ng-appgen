@@ -12,12 +12,14 @@
 
         var scope, ctrl;
 
-        beforeEach(module('<%= appname %>'));
+        beforeEach(function() {
+            module('<%= appname %>');
 
-        beforeEach(inject(function($rootScope, $controller) {
-            scope = $rootScope.$new();
-            ctrl = $controller('<%= ctrlname %>', {$scope: scope});
-        }));
+            inject(function($rootScope, $controller) {
+                scope = $rootScope.$new();
+                ctrl = $controller('<%= ctrlname %>', {$scope: scope});
+            });
+        });
 
         it('should ...', function() {
 

@@ -10,15 +10,22 @@
      */
     describe('<%= _.camelize(name) %>', function() {
 
-        beforeEach(module('<%= appname %>'));
+        var filter;
 
-        it('should ...', inject(function($filter) {
+        beforeEach(function() {
+            module('<%= appname %>');
+
+            inject(function($filter) {
+                filter = $filter('<%= _.camelize(name) %>');
+            });
+        });
+
+        it('should ...', function() {
 
             //TODO: Implement your filter spec logic here
-            var filter = $filter('<%= _.camelize(name) %>');
-            expect(filter('input')).toEqual('output');
+            //expect(filter('input')).toEqual('output');
 
-        }));
+        });
 
     });
 

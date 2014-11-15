@@ -12,12 +12,14 @@
 
         var scope, ctrl;
 
-        beforeEach(module('common'));
+        beforeEach(function() {
+            module('common');
 
-        beforeEach(inject(function($rootScope, $controller) {
-            scope = $rootScope.$new();
-            ctrl = $controller('commonController', {$scope: scope});
-        }));
+            inject(function($rootScope, $controller) {
+                scope = $rootScope.$new();
+                ctrl = $controller('commonController', {$scope: scope});
+            });
+        });
 
         it('should ...', function() {
 

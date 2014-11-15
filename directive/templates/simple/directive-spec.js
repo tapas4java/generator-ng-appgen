@@ -12,12 +12,14 @@
 
         var scope, compile;
 
-        beforeEach(module('<%= appname %>'));
+        beforeEach(function() {
+            module('<%= appname %>');
 
-        beforeEach(inject(function($rootScope,$compile) {
-            scope = $rootScope.$new();
-            compile = $compile;
-        }));
+            inject(function($rootScope, $compile) {
+                scope = $rootScope.$new();
+                compile = $compile;
+            });
+        });
 
         it('should ...', function() {
 

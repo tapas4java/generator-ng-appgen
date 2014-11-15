@@ -12,17 +12,19 @@
 
         var service;
 
-        beforeEach(module('help'));
+        beforeEach(function(){
+            module('help');
 
-        beforeEach(inject(function(helpService){
-            service = helpService;
-        }));
+            inject(function(helpService){
+                service = helpService;
+            });
+        });
 
-        it('should return the content', inject(function(helpService) {
+        it('should return the content', function() {
 
             expect(service.getHelpContent()).toBeDefined();
 
-        }));
+        });
 
     });
 

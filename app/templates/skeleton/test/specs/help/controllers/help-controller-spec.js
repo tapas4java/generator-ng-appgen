@@ -12,12 +12,14 @@
 
         var scope, ctrl;
 
-        beforeEach(module('help'));
+        beforeEach(function() {
+            module('help');
 
-        beforeEach(inject(function($rootScope, $controller) {
-            scope = $rootScope.$new();
-            ctrl = $controller('helpController', {$scope: scope, loadContent: []});
-        }));
+            inject(function($rootScope, $controller) {
+                scope = $rootScope.$new();
+                ctrl = $controller('helpController', {$scope: scope, loadContent: []});
+            });
+        });
 
         it('should define helpContentList property', function() {
 

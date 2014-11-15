@@ -12,7 +12,6 @@
 
         var helpLink = element(by.id('help'));
         var helpHeader = element(by.id('helpHeader'));
-
         var logo = element(by.id('logo'));
         var homeHeader = element(by.binding('message'));
 
