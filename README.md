@@ -46,8 +46,8 @@ Boom! See your application in action:
     
 
     grunt test - it will run unit test cases through karma
-    grunt run - it will open your chrome and run the application
-    grunt e2e - open new terminal and execute this to run e2e tests
+    grunt run  - it will open your chrome and run the application
+    grunt e2e  - open new terminal and execute this to run e2e tests
 
 Directory Structure
 -------------
