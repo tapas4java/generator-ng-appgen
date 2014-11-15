@@ -2,12 +2,10 @@
 
 >Yeomen/Angular app generator for enterprise applications with best folder structure and end to end development workflow support.
 
-This generator follows the angular best practice guidelines for code organization and code generation strategy which are really helpful for huge enterprise grade applications. Thanks to @[Chris Gross](https://github.com/cgross), ng-appgen is customized on top of his [generator-cg-angular](https://github.com/cgross/generator-cg-angular).
+This generator follows the angular best practice guidelines for code organization and code generation strategy which are really helpful for huge enterprise grade applications. Thanks to @[Chris Gross](https://github.com/cgross), ng-appgen is built on top of his [generator-cg-angular](https://github.com/cgross/generator-cg-angular).
 
 Features
 ---------
-
-----------
 
 * Provides a directory structure geared towards large Angular projects.
     * Each controller, service, filter, and directive, template are placed in their own file within respective category folder.
@@ -28,8 +26,6 @@ Features
 
 Getting Started
 -------------
-
-----------
 
 Prerequisites: Node, Grunt, Yeoman, and Bower.  Once Node is installed, do:
 
@@ -56,13 +52,9 @@ Boom! See your application in action:
 Directory Structure
 -------------
 
-----------
-
 All subgenerators prompt the user to specify where to save the new files.  Thus you can create any directory structure you desire, including nesting.  The generator will create a handful of files in the root of your project and application related files in **app** folder like `index.html`, `app.js`, and `app.less` etc.  You determine how the rest of the project will be structured.
 
 This is the default application structure which you will get by running `yo ng-appgen` command with app name as `testapp`.
-
-----------
 
     /testapp ............................... application root folder
         /app ............................... container for all application artefacts
@@ -142,11 +134,10 @@ This is the default application structure which you will get by running `yo ng-a
     	.jshintrc .................................. jshint configuration file
     	.yo-rc.json ................................ yeomen configuration file
 
+NOTE: Folders are strated with `'/'` in above structure.
 
 Grunt Tasks
 -------------
-
-----------
 
 Now that the project is created, you have 4 simple Grunt commands available:
 
@@ -159,8 +150,6 @@ When `grunt run` is running, any changed javascript files will be linted using J
 
 Code Generators
 -------------
-
-----------
 
 Modules allow you to more explicitly separate parts of your application.  Use the `yo ng-appgen:module my-module` command and specify a new subdirectory to place the module into.  Once you've created a module, running other subgenerators will now prompt you to select the module in which to place the new component.
 
@@ -190,14 +179,10 @@ The modal subgenerator is a convenient shortcut to create templates that work as
 Preconfigured Libraries
 -------------
 
-----------
-
 The new app will have a handful of preconfigured libraries included.  This includes Angular 1.3.2, Bootstrap 3.3, AngularUI Bootstrap, AngularUI Utils, FontAwesome 4.2, JQuery 2.1, Underscore 1.7, LESS 1.7, Restangular 1, Moment 2.5 and angular-loading-bar.  You may of course add to or remove any of these libraries.  But the work to integrate them into the app and into the build process has already been done for you.
 
 Build Process
 -------------
-
-----------
 
 The project will include a ready-made Grunt build that will:
 
@@ -223,8 +208,6 @@ Importantly, grunt-dom-munger uses CSS attribute selectors to manage the parsing
 
 Release History
 -------------
-
-----------
 
 * 15/11/2014 - v1.0.1 - Few fixes including 'grunt build' issue and few optimizations on tests.
 * 01/11/2014 - v1.0.0 - Initial release of template as Yeoman generator.
