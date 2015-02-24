@@ -27,7 +27,7 @@
     "underscore": "~1.7.0",
     "underscore.string": "~2.3.3",
     "yeoman-generator": "~0.17.7",
-    "chalk": "~0.5.1",
+    "chalk": "~1.0.0",
     "ng-parse-module": "~0.1.0"
   },
   "devDependencies": {
