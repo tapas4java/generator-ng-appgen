@@ -107,7 +107,7 @@ module.exports = function (grunt) {
         options: {
           read:[
             {selector:'script[data-concat!="false"]',attribute:'src',writeto:'appjs',isPath:true},
-            {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
+            {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss',isPath:true}
           ]
         },
         src: 'app/index.html'
